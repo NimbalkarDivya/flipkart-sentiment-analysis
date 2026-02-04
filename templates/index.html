@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flipkart Sentiment Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="card">
+        <h1>🛒 Flipkart Review Sentiment</h1>
+        <p class="subtitle">
+            Analyze whether a product review is Positive or Negative using Machine Learning
+        </p>
+
+        <form method="POST">
+            <textarea
+                name="review"
+                placeholder="Paste a Flipkart product review here..."
+                required
+            ></textarea>
+
+            <button type="submit">Analyze Sentiment</button>
+        </form>
+
+        {% if sentiment %}
+            <div class="result {{ 'positive' if 'Positive' in sentiment else 'negative' }}">
+                {{ sentiment }}
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+</body>
+</html>
